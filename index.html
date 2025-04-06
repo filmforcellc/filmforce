@@ -499,59 +499,6 @@
       display: block;
     }
 
-* {box-sizing: border-box;}
-
-.slideshow-container {
-  position: relative;
-  max-width: 100%;
-  margin: auto;
-}
-
-.mySlides {
-  display: none;
-}
-
-img {
-  width: 100%;
-  height: auto;
-}
-
-.fade {
-  animation-name: fade;
-  animation-duration: 1s; /* Slower transition */
-}
-
-@keyframes fade {
-  from {opacity: 0.4} 
-  to {opacity: 1}
-}
-
-button {
-  position: absolute;
-  top: 50%;
-  padding: 16px;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  transition: 0.3s;
-  z-index: 1000;
-}
-
-.prev {
-  left: 0;
-}
-
-.next {
-  right: 0;
-}
-
-button:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-
     /* Team Section */
     .team {
       background-color: var(--secondary-dark);
@@ -1041,6 +988,7 @@ button:hover {
         <a href="#pricing" class="btn">See Pricing</a>
         <a href="#contact" class="btn btn-outline">Book Now</a>
       </div>
+    </div>
   </section>
 
   <!-- About Section -->
@@ -1384,22 +1332,7 @@ button:hover {
   <section id="gallery" class="section gallery">
     <div class="container">
       <h2 class="section-title">Photo Gallery</h2>
-<div class="slideshow-container">
-  <div class="mySlides fade">
-    <img src="images/1.jpg" style="width:100%">
-  </div>
-  <div class="mySlides fade">
-    <img src="images/2.jpg" style="width:100%">
-  </div>
-  <div class="mySlides fade">
-    <img src="images/3.jpg" style="width:100%">
-  </div>
-  <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
-  <button class="next" onclick="plusSlides(1)">&#10095;</button>
-</div>
-
-</div>
-
+      
       <div class="gallery-grid">
         <!-- Using placeholder images - replace with your actual images -->
         <div class="gallery-item">
@@ -1655,24 +1588,5 @@ I definitely recommend Film Force! It was really fun. We might make this a summe
       setupSlideshow();
     });
   </script>
-  <script>
-let slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function showSlides(n) {
-  let slides = document.getElementsByClassName("mySlides");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  slides[slideIndex - 1].style.display = "block";
-}
-
-</script>
 </body>
 </html>
