@@ -499,6 +499,31 @@
       display: block;
     }
 
+    .slideshow-container {
+  position: relative;
+  max-width: 100%;
+  margin: auto;
+}
+
+.mySlides {
+  display: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 3s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
     /* Team Section */
     .team {
       background-color: var(--secondary-dark);
@@ -1331,7 +1356,18 @@
   <section id="gallery" class="section gallery">
     <div class="container">
       <h2 class="section-title">Photo Gallery</h2>
-      
+      <div class="slideshow-container">
+  <div class="mySlides fade">
+    <img src="images/1.jpg" style="width:100%">
+  </div>
+  <div class="mySlides fade">
+    <img src="images/2.jpg" style="width:100%">
+  </div>
+  <div class="mySlides fade">
+    <img src="images/3.jpg" style="width:100%">
+  </div>
+</div>
+
       <div class="gallery-grid">
         <!-- Using placeholder images - replace with your actual images -->
         <div class="gallery-item">
