@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Film Force | Outdoor Movie Events in Connecticut</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #fc6502;
+      --primary-dark: #e35900;
+      --secondary-color: #464646;
+      --secondary-dark: #333333;
+      --text-light: #ffffff;
+      --text-dark: #232323;
+      --bg-light: #f7f7f7;
+      --bg-dark: #464646;
+      --card-bg: #ffffff;
+      --card-border: #e0e0e0;
+      --testimonial-bg: #fc6502;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: var(--secondary-dark);
+      position: relative;
+      padding-bottom: 1rem;
+      text-align: center;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 4px;
+      background-color: var(--primary-color);
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Header and Navigation */
+    .header {
+      background-color: var(--card-bg);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 8px;
+      background-color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      font-weight: 700;
+      font-size: 1.8rem;
+    }
+
+    .logo-text {
+      font-weight: 700;
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      margin-left: 0.8rem;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--secondary-dark);
+      font-weight: 600;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover {
+      color: var(--primary-color);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--primary-color);
+      transition: width 0.3s;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .btn {
+      background-color: var(--primary-color);
+      color: var(--text-light);
+      padding: 0.8rem 1.5rem;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.3s;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+    }
+
+    .bar {
+      display: block;
+      width: 25px;
+      height: 3px;
+      margin: 5px auto;
+      transition: all 0.3s ease-in-out;
+      background-color: var(--secondary-dark);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                 url('/api/placeholder/1200/700') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      margin-top: -1px;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 0 20px;
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2.5rem;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    /* About Section */
+    .about-content {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-image {
+      flex: 1;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .about-text h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+    }
+
+    .mission-vision {
+      margin-top: 2rem;
+      border-left: 3px solid var(--primary-color);
+      padding-left: 1rem;
+    }
+
+    .mission-vision h4 {
+      margin-bottom: 0.5rem;
+      color: var(--secondary-dark);
+    }
+
+    .mission-vision p {
+      margin-bottom: 1rem;
+    }
+
+    /* Pricing Section */
+    .pricing-title {
+      color: var(--primary-color);
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .pricing-subtitle {
+      color: var(--secondary-dark);
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .pricing-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .pricing-card {
+      background-color: var(--card-bg);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .pricing-header {
+      background-color: var(--secondary-dark);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .pricing-name {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary-color);
+    }
+
+    .pricing-type {
+      font-size: 1rem;
+      opacity: 0.8;
+    }
+
+    .pricing-body {
+      padding: 2rem;
+    }
+
+    .price-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .price-item:last-child {
+      border-bottom: none;
+    }
+
+    .price-name {
+      font-weight: 600;
+    }
+
+    .price-value {
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    .price-info {
+      text-align: center;
+      margin: 1.5rem 0;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .pricing-footer {
+      text-align: center;
+      padding: 0 2rem 2rem;
+    }
+
+    /* Formats Section */
+    .Formats {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+    }
+
+    .Formats .section-title {
+      color: var(--text-light);
+    }
+
+    .Formats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 2rem;
+      text-align: center;
+      transition: transform 0.3s, background-color 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .service-icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Party Ideas Section */
+    .party-ideas {
+      background-color: var(--bg-light);
+    }
+
+    .ideas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .idea-card {
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .idea-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .idea-icon {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    /* Requirements Section */
+    .requirements {
+      background-color: var(--secondary-dark);
+      color: var(--text-light);
+    }
+
+    .requirements .section-title {
+      color: var(--text-light);
+    }
+
+    .req-list {
+      counter-reset: req-counter;
+      list-style-type: none;
+    }
+
+    .req-item {
+      position: relative;
+      padding: 0.8rem 0 0.8rem 3rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .req-item:last-child {
+      border-bottom: none;
+    }
+
+    .req-item::before {
+      content: counter(req-counter);
+      counter-increment: req-counter;
+      position: absolute;
+      left: 0;
+      top: 0.8rem;
+      width: 28px;
+      height: 28px;
+      background-color: var(--primary-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    /* Gallery Section */
+    .gallery {
+      background-color: var(--bg-light);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.03);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Team Section */
+    .team {
+      background-color: var(--secondary-dark);
+      color: var(--text-light);
+    }
+    .team .section-title {
+      color: var(--text-light);
+    }
+
+
+    .team-container {
+      display: flex;
+      gap: 3rem;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .team-member {
+      text-align: center;
+      max-width: 300px;
+    }
+
+    .team-photo {
+      width: 200px;
+      height: 200px;
+      overflow: hidden;
+      border-radius: 50%;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .team-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .team-name {
+      font-size: 1.5rem;
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .team-role {
+      color: var(--primary-color);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    /* Slideshow Section */
+    .slideshow {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+    }
+
+    .slideshow .section-title {
+      color: var(--text-light);
+    }
+
+.slideshow .slideshow-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Ensures the content is centered vertically */
+  width: 100%;
+  height: 100vh; /* Makes the section take up full height of the viewport */
+}
+
+    .slideshow-info {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .slideshow-pricing {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      width: 100%;
+      max-width: 600px;
+  display: flex;
+  flex-direction: column; /* Stacks the content vertically */
+  align-items: center; /* Centers the content inside the box */
+  justify-content: center; /* Centers content vertically within the box */
+  margin: 0 auto;
+    }
+
+    .slideshow-pricing h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .slideshow-price-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .slideshow-price-item:last-child {
+      border-bottom: none;
+    }
+
+.video-container {
+  width: 100%;
+  height: 300px;
+  max-height: 100%;
+  padding-bottom: 5%;
+  position: relative;
+}
+
+.video-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+
+    .video-placeholder iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+    }
+
+    .play-icon {
+      font-size: 4rem;
+      color: var(--primary-color);
+    }
+
+    /* Testimonials Section */
+    .testimonials {
+      background-color: var(--bg-light);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .testimonial-card {
+      background-color: var(--testimonial-bg);
+      border-radius: 15px;
+      padding: 2rem;
+      color: white;
+      position: relative;
+    }
+
+    .testimonial-content {
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .testimonial-source {
+      font-size: 0.8rem;
+      text-decoration: none;
+      color: white;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+
+    .testimonial-source:hover {
+      opacity: 1;
+    }
+
+    /* Contact Section */
+    .contact {
+      background-color: var(--secondary-dark);
+      color: white;
+    }
+
+    .contact .section-title {
+      color: white;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+    }
+
+    .contact-info h3 {
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-icon {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      margin-right: 1rem;
+    }
+
+    .contact-form {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--text-dark);
+      font-weight: 600;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--secondary-dark);
+      color: white;
+      padding: 3rem 0 1rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h3 {
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      transition: background-color 0.3s;
+    }
+
+    .social-link:hover {
+      background-color: var(--primary-color);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    /* Slideshow */
+    .image-slideshow {
+      position: relative;
+      max-width: 100%;
+      height: 500px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slideshow-controls {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .slideshow-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .slideshow-dot.active {
+      background-color: var(--primary-color);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Media Queries */
+    @media (max-width: 992px) {
+      .about-content {
+        flex-direction: column;
+      }
+      
+      .about-image {
+        order: -1;
+      }
+
+      .team-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      
+      .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 80px;
+        flex-direction: column;
+        background-color: white;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        padding: 2rem 0;
+        z-index: 999;
+      }
+      
+      .nav-menu.active {
+        left: 0;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .hero-btns {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+      }
+
+      .pricing-header {
+        padding: 1.5rem;
+      }
+
+      .pricing-body {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo-container">
+          <div class="logo">FF</div>
+          <span class="logo-text">Film Force</span>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#pricing" class="nav-link">Pricing</a></li>
+          <li><a href="#Formats" class="nav-link">Formats</a></li>
+          <li><a href="#party-ideas" class="nav-link">Party Ideas</a></li>
+          <li><a href="#requirements" class="nav-link">Requirements</a></li>
+          <li><a href="#gallery" class="nav-link">Gallery</a></li>
+          <li><a href="#team" class="nav-link">Our Team</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="menu-toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Outdoor Movies Brought to Your Party!</h1>
+      <p>Professional projection equipment and inflatable screens for unforgettable outdoor events in Connecticut</p>
+      <div class="hero-btns">
+        <a href="#pricing" class="btn">See Pricing</a>
+        <a href="#contact" class="btn btn-outline">Book Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title">About Film Force</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <h3>Bringing Entertainment To You!</h3>
+          <p>Film Force provides you with entertainment for your next party from the comfort of your own back yard. Our highly trained staff will see to it that your party goes off famously. Leave your friends and neighbors in awe with your spectacular event!</p>
+          <p>We offer state-of-the-art inflatable screens (10ft, 12ft, and 16ft options), 3500 Lumens Hi-Def DLP Projectors, and powerful speakers for an authentic outdoor movie experience.</p>
+          
+          <div class="mission-vision">
+            <h4>Vision Statement:</h4>
+            <p>Film Force brings communities together; one spectacular night at a time.</p>
+            <h4>Mission Statement:</h4>
+            <p>Film Force provides professional service with innovative technology to ensure a spectacular event.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<!-- Pricing Section -->
+<section id="pricing" class="section">
+  <div class="container">
+ 
+
+    <h2 class="section-title">Our Pricing</h2>
+    <p class="pricing-subtitle">Choose the perfect screen size for your event</p>
+
+   <!-- Note: Prices haven't changed -->
+    <p class="price-value" style="text-align:center; margin-top: 20px; font-weight: bold;">After over 1 decade, we have not changed our prices!</p>
+    <div class="pricing-container">
+      <!-- 10 ft. Screen Card -->
+      <div class="pricing-card">
+        <!-- Screen Image -->
+        <div class="screen-image">
+          <img src="path-to-your-image/10ft-screen.jpg" alt="10 ft. Screen" />
+        </div>
+        <div class="pricing-header">
+          <h3 class="pricing-name">10 ft. Screen</h3>
+          <p class="pricing-type">Indoor Screen</p>
+        </div>
+        <div class="pricing-body">
+          <div class="price-item">
+            <span class="price-name">1 Event</span>
+            <span class="price-value">$150</span>
+          </div>
+          <div class="price-item">
+            <span class="price-name">Premium Package</span>
+            <span class="price-value">$380</span>
+          </div>
+          <div class="price-item">
+            <span class="price-name">Deluxe Package</span>
+            <span class="price-value">$600</span>
+          </div>
+          <p class="price-info">Up to 35 People (12 ft x 12 ft Flat, Clear Area)</p>
+        </div>
+        <div class="pricing-footer">
+          <a href="#contact" class="btn">Book Now</a>
+        </div>
+      </div>
+
+      <!-- 12 ft. Screen Card -->
+      <div class="pricing-card">
+        <!-- Screen Image -->
+        <div class="screen-image">
+          <img src="path-to-your-image/12ft-screen.jpg" alt="12 ft. Screen" />
+        </div>
+        <div class="pricing-header">
+          <h3 class="pricing-name">12 ft. Screen</h3>
+          <p class="pricing-type">Outdoor Screen</p>
+        </div>
+        <div class="pricing-body">
+          <div class="price-item">
+            <span class="price-name">1 Event</span>
+            <span class="price-value">$225</span>
+          </div>
+          <div class="price-item">
+            <span class="price-name">Premium Package</span>
+            <span class="price-value">$575</span>
+          </div>
+          <div class="price-item">
+            <span class="price-name">Deluxe Package</span>
+            <span class="price-value">$900</span>
+          </div>
+          <p class="price-info">Up to 75 People (25 ft x 25 ft Flat, Clear Area)</p>
+        </div>
+        <div class="pricing-footer">
+          <a href="#contact" class="btn">Book Now</a>
+        </div>
+      </div>
+
+      <!-- 16 ft. Screen Card -->
+      <div class="pricing-card">
+        <!-- Screen Image -->
+        <div class="screen-image">
+          <img src="path-to-your-image/16ft-screen.jpg" alt="16 ft. Screen" />
+        </div>
+        <div class="pricing-header">
+          <h3 class="pricing-name">16 ft. Screen</h3>
+          <p class="pricing-type">Outdoor Screen</p>
+        </div>
+        <div class="pricing-body">
+          <div class="price-item">
+            <span class="price-name">1 Event</span>
+            <span class="price-value">$275</span>
+          </div>
+          <div class="price-item">
+            <span class="price-name">Premium Package</span>
+            <span class="price-value">$700</span>
+          </div>
+          <div class="price-item">
+            <span class="price-name">Deluxe Package</span>
+            <span class="price-value">$1,100</span>
+          </div>
+          <p class="price-info">Up to 150 People (40 ft x 40 ft Flat, Clear Area)</p>
+        </div>
+        <div class="pricing-footer">
+          <a href="#contact" class="btn">Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gratuities Note below screen pricing -->
+    <p class="text-center" style="margin-top: 20px; font-style: italic;">Gratuities are greatly appreciated</p>
+
+    <!-- Custom Slideshows Section -->
+    <div class="slideshow-pricing">
+      <!-- Custom Slideshows Card -->
+      <div class="pricing-card">
+        <!-- Custom Slideshows Header -->
+        <div class="pricing-header">
+          <h3 class="pricing-name">Custom Slideshows</h3>
+        </div>
+
+        <!-- Custom Slideshows Pricing Body -->
+        <div class="pricing-body">
+          <div class="price-item">
+            <span class="price-name">Custom Slideshows (300 Picture Limit)</span>
+            <span class="price-value">$100.00</span>
+          </div>
+          <div class="price-item">
+            <span class="price-name">Commemorative Slideshow DVDs</span>
+            <span class="price-value">$1 each</span>
+          </div>
+          <div class="price-item">
+            <span class="price-name">Bulk Order (50+ DVDs)</span>
+            <span class="price-value">$0.75 each</span>
+          </div>
+        </div>
+
+        <!-- YouTube Video -->
+<div class="video-container">
+  <iframe src="https://www.youtube.com/embed/EWKhqdJCT6Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+
+        <!-- Footer -->
+        <div class="pricing-footer">
+          <a href="#contact" class="btn">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+  <!-- Formats Section -->
+  <section id="Formats" class="section Formats">
+    <div class="container">
+      <h2 class="section-title">Possible Formats</h2>
+      <div class="Formats-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-film"></i>
+          </div>
+          <h3>Movies</h3>
+          <p>Blu-Ray or DVD Preferred</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-gamepad"></i>
+          </div>
+          <h3>Video Games</h3>
+          <p>Gaming on the big screen with PlayStation, Xbox, and Nintendo systems.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-images"></i>
+          </div>
+          <h3>Slideshows</h3>
+          <p>Custom photo slideshows for birthdays, anniversaries, and special occasions.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-microphone"></i>
+          </div>
+          <h3>Karaoke</h3>
+          <p>Sing your heart out on the big screen</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-wifi"></i>
+          </div>
+          <h3>Streaming</h3>
+          <p>Stream content from Netflix, Hulu, Amazon Prime, and other online platforms. *strong wifi required*</p>
+        </div>
+      </div>
+    </div>
+
+
+</section>
+
+  <!-- Party Ideas Section -->
+  <section id="party-ideas" class="section party-ideas">
+    <div class="container">
+      <h2 class="section-title">Party Ideas</h2>
+      <p class="text-center" style="margin-bottom: 3rem;">Film Force is an excellent choice for various get-togethers. Here are some party ideas:</p>
+      
+      <div class="ideas-grid">
+        <div class="idea-card">
+          <div class="idea-icon">
+            <i class="fas fa-film"></i>
+          </div>
+          <h3>Family Movie Night</h3>
+        </div>
+        
+        <div class="idea-card">
+          <div class="idea-icon">
+            <i class="fas fa-birthday-cake"></i>
+          </div>
+          <h3>Birthday Parties</h3>
+        </div>
+        
+        <div class="idea-card">
+          <div class="idea-icon">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <h3>Graduation Parties</h3>
+        </div>
+        
+        <div class="idea-card">
+          <div class="idea-icon">
+            <i class="fas fa-gift"></i>
+          </div>
+          <h3>Surprise Parties</h3>
+        </div>
+        
+        <div class="idea-card">
+          <div class="idea-icon">
+            <i class="fas fa-hamburger"></i>
+          </div>
+          <h3>Summer BBQs</h3>
+        </div>
+        
+        <div class="idea-card">
+          <div class="idea-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Team Meetings</h3>
+        </div>
+        
+        <div class="idea-card">
+          <div class="idea-icon">
+            <i class="fas fa-home"></i>
+          </div>
+          <h3>Welcome Home Parties</h3>
+        </div>
+        
+        <div class="idea-card">
+          <div class="idea-icon">
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+          <h3>Holiday Parties</h3>
+        </div>
+        
+        <div class="idea-card">
+          <div class="idea-icon">
+            <i class="fas fa-city"></i>
+          </div>
+          <h3>Block Parties</h3>
+        </div>
+        
+        <div class="idea-card">
+          <div class="idea-icon">
+            <i class="fas fa-gamepad"></i>
+          </div>
+          <h3>Gaming Tournaments</h3>
+        </div>
+        
+        <div class="idea-card">
+          <div class="idea-icon">
+            <i class="fas fa-football-ball"></i>
+          </div>
+          <h3>Sports Viewing</h3>
+        </div>
+        
+        <div class="idea-card">
+          <div class="idea-icon">
+            <i class="fas fa-swimming-pool"></i>
+          </div>
+          <h3>Pool Parties</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Requirements Section -->
+  <section id="requirements" class="section requirements">
+    <div class="container">
+      <h2 class="section-title">Requirements</h2>
+      <p class="text-center" style="margin-bottom: 3rem;">These requirements must be met to ensure a quality event:</p>
+      
+      <ol class="req-list">
+        <li class="req-item">Client must sign a simple work contract prior to start of event</li>
+        <li class="req-item">Client MUST provide movie (DVD, Blu-Ray, Flash Drive, etc.) or online accounts being used (Netflix, Xbox Live, etc.)</li>
+        <li class="req-item">Film Force may provide Video Games at an additional fee</li>
+        <li class="req-item">Client MUST provide sufficient Wi-Fi in order to use online services (Netflix, Xbox Live, Live Streaming)</li>
+        <li class="req-item">For an optimal experience, movies must be started after sunset</li>
+        <li class="req-item">For the 16 ft Screen, we need 30ftx40ft of free space. For the 12 ft Screen, we need 25ftx25ft of free space (both preferably on a flat lawn)</li>
+        <li class="req-item">Clients & Party Guests MAY NOT touch the equipment unless permitted to do so by Event Coordinator</li>
+        <li class="req-item">Provide two separate outlets for the equipment</li>
+        <li class="req-item">Client MUST provide two dates in the event the first date is compromised by inclement weather</li>
+        <li class="req-item">If there is a 40% chance of rain or greater, or winds exceed 15 MPH, the event WILL be cancelled (Event will be moved to your designated rain date)</li>
+        <li class="req-item">Client MUST provide at least a $100 down payment</li>
+        <li class="req-item">In the event of a cancellation, client MUST provide timely notice (48 hours or more). Failure to do so will result in the forfeiture of the down payment</li>
+        <li class="req-item">We Recommend no more than 100 viewers for the 16 ft. screen and 50 viewers for the 12 ft. screen</li>
+        <li class="req-item">A double feature package (up to 5 hours) and extended hour packages are available</li>
+        <li class="req-item">The Client MUST pay $75 for each hour the screen is being used past the allotted 2.5 hours</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="section gallery">
+    <div class="container">
+      <h2 class="section-title">Photo Gallery</h2>
+      
+      <div class="gallery-grid">
+        <!-- Using placeholder images - replace with your actual images -->
+        <div class="gallery-item">
+          <img src="/api/placeholder/400/300" alt="Film Force Event">
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/400/300" alt="Film Force Event">
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/400/300" alt="Film Force Event">
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/400/300" alt="Film Force Event">
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/400/300" alt="Film Force Event">
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/400/300" alt="Film Force Event">
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/400/300" alt="Film Force Event">
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/400/300" alt="Film Force Event">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section id="team" class="section team">
+    <div class="container">
+      <h2 class="section-title">Meet Our Team</h2>
+      
+      <div class="team-container">
+        <div class="team-member">
+          <div class="team-photo">
+            <img src="/api/placeholder/200/200" alt="Team Member 1">
+          </div>
+          <h3 class="team-name">Justin</h3>
+          <p class="team-role">Co-Founder</p>
+          <p>With a passion for films and sports, Justin has been creating unforgettable outdoor movie experiences since 2010.</p>
+        </div>
+        
+        <div class="team-member">
+          <div class="team-photo">
+            <img src="/api/placeholder/200/200" alt="Team Member 2">
+          </div>
+          <h3 class="team-name">Josh</h3>
+          <p class="team-role">Co-Founder</p>
+          <p>Josh brings technical expertise and a creative eye to ensure every Film Force event is a spectacular success.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="section testimonials">
+    <div class="container">
+      <h2 class="section-title">What Our Clients Say</h2>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p class="testimonial-content">Josh and Justin were amazing! They came and set up the 16 foot inflatable movie screen in no time flat. They hooked us up with dance music before the show and even entertained the kids and played football with them! They are professional, on time, attentive, and have the best pricing around! I highly recommend FilmForce, LLC for your next event! You will get so much more than you bargained for!</p>
+          <div class="testimonial-author">
+            <span>Liza B.</span>
+            <a href="https://www.facebook.com/Film-Force-LLC-838155592876430/reviews" class="testimonial-source" target="_blank">Facebook</a>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <p class="testimonial-content">Justin & Josh of Film Force, LLC had done a fundraiser for New Britain High School Football 2014. They were the absolute very best!!! Great turnout, great evening and a huge success! I will recommend Justin & Josh, Film Force, LLC for any and all of your indoor and outdoor entertainment needs!!</p>
+          <div class="testimonial-author">
+            <span>Dave O.</span>
+
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <p class="testimonial-content">We had the best time having Film Force come set up their huge movie screen in our yard for a movie under the stars at a slumber party my daughter had. The girls had blankets and pillows in the grass to lounge on while they ate pizza and popcorn and watched Playing with Fire. It was a blast!
+Justin and Josh made this so easy and took care of every detail to create a great time. 
+The screen was amazing and the sound was perfect. 
+I definitely recommend Film Force! It was really fun. We might make this a summertime tradition!</p>
+          <div class="testimonial-author">
+            <span>Jennifer</span>
+            <a href="https://www.facebook.com/Film-Force-LLC-838155592876430/reviews" class="testimonial-source" target="_blank">Facebook</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+      
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Get In Touch</h3>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+              <p>filmforcellc@gmail.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <p>Serving all of Connecticut</p>
+            </div>
+          </div>
+          <h3 style="margin-top: 2rem;">Follow Us</h3>
+          <div class="social-links">
+            <a href="https://www.facebook.com/Film-Force-LLC-838155592876430/" class="social-link" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.yelp.com/biz/film-force-llc-new-hartford" class="social-link" target="_blank">
+              <i class="fab fa-yelp"></i>
+            </a>
+            <a href="https://www.google.com/search?q=film+force+llc" class="social-link" target="_blank">
+              <i class="fab fa-google"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="contact-form">
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" id="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" id="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="subject" class="form-label">Subject</label>
+              <input type="text" id="subject" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="message" class="form-label">Message</label>
+              <textarea id="message" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Film Force</h3>
+          <p>Professional projection equipment and inflatable screens for unforgettable outdoor events in Connecticut.</p>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#party-ideas">Party Ideas</a></li>
+            <li><a href="#requirements">Requirements</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>More Info</h3>
+          <ul class="footer-links">
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#team">Our Team</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Film Force, LLC. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+      const navMenu = document.querySelector('.nav-menu');
+      navMenu.classList.toggle('active');
+      
+      const bars = document.querySelectorAll('.bar');
+      bars.forEach(bar => bar.classList.toggle('active'));
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const navMenu = document.querySelector('.nav-menu');
+        if (navMenu.classList.contains('active')) {
+          navMenu.classList.remove('active');
+        }
+        
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Handle contact form submission
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+      
+      // Replace this with your actual form submission code
+      // For example, you could use EmailJS or a similar service
+      const mailtoLink = `mailto:filmforcellc@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
+      
+      window.location.href = mailtoLink;
+      
+      // Display success message
+      alert('Thank you for your message! We will get back to you soon.');
+      this.reset();
+    });
+
+    // Simple Image Slideshow for Gallery
+    function setupSlideshow() {
+      // This is a placeholder for actual slideshow functionality
+      // You can enhance this with a proper image gallery library
+      console.log('Slideshow initialized');
+    }
+
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      setupSlideshow();
+    });
+  </script>
+</body>
+</html>
