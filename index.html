@@ -256,57 +256,6 @@
       display: block;
     }
 
-.slideshow-container {
-  position: relative;
-  max-width: 100%;
-  margin: auto;
-}
-
-.mySlides {
-  display: none;
-}
-
-img {
-  width: 100%;
-  height: auto;
-}
-
-.fade {
-  animation-name: fade;
-  animation-duration: 3s; /* Slower transition */
-}
-
-@keyframes fade {
-  from {opacity: 0.4} 
-  to {opacity: 1}
-}
-
-button {
-  position: absolute;
-  top: 50%;
-  padding: 16px;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  transition: 0.3s;
-  z-index: 1000;
-}
-
-.prev {
-  left: 0;
-}
-
-.next {
-  right: 0;
-}
-
-button:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-
 
     /* About Section */
     .about-content {
@@ -1048,20 +997,33 @@ button:hover {
   <section id="gallery" class="section gallery">
     <div class="container">
       <h2 class="section-title">Photo Gallery</h2>
-
-      <div class="slideshow-container">
-  <div class="mySlides fade">
-    <img src="images/1.jpg" style="width:100%">
-  </div>
-  <div class="mySlides fade">
-    <img src="images/2.jpg" style="width:100%">
-  </div>
-  <div class="mySlides fade">
-    <img src="images/3.jpg" style="width:100%">
-  </div>
-  <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
-  <button class="next" onclick="plusSlides(1)">&#10095;</button>
-</div>
+      
+      <div class="gallery-grid">
+        <!-- Using placeholder images - replace with your actual images -->
+        <div class="gallery-item">
+          <img src="/api/placeholder/400/300" alt="Film Force Event">
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/400/300" alt="Film Force Event">
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/400/300" alt="Film Force Event">
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/400/300" alt="Film Force Event">
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/400/300" alt="Film Force Event">
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/400/300" alt="Film Force Event">
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/400/300" alt="Film Force Event">
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/400/300" alt="Film Force Event">
+        </div>
       </div>
     </div>
   </section>
@@ -1616,13 +1578,15 @@ I definitely recommend Film Force! It was really fun. We might make this a summe
       alert('Thank you for your message! We will get back to you soon.');
       this.reset();
     });
+
     // Simple Image Slideshow for Gallery
     function setupSlideshow() {
       // This is a placeholder for actual slideshow functionality
       // You can enhance this with a proper image gallery library
       console.log('Slideshow initialized');
     }
-        // Initialize when DOM is loaded
+
+    // Initialize when DOM is loaded
     document.addEventListener('DOMContentLoaded', function() {
       setupSlideshow();
     });
