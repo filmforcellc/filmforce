@@ -226,6 +226,36 @@
       gap: 1rem;
       justify-content: center;
     }
+    
+        /* Gallery Section */
+    .gallery {
+      background-color: var(--bg-light);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.03);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
 
     /* About Section */
     .about-content {
@@ -469,36 +499,7 @@
       font-weight: 700;
       font-size: 0.9rem;
     }
-
-    /* Gallery Section */
-    .gallery {
-      background-color: var(--bg-light);
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1rem;
-    }
-
-    .gallery-item {
-      overflow: hidden;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s;
-    }
-
-    .gallery-item:hover {
-      transform: scale(1.03);
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
+    
     /* Team Section */
     .team {
       background-color: var(--secondary-dark);
@@ -961,12 +962,12 @@
         </div>
         <ul class="nav-menu">
           <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#gallery" class="nav-link">Gallery</a></li>
           <li><a href="#about" class="nav-link">About</a></li>
           <li><a href="#pricing" class="nav-link">Pricing</a></li>
           <li><a href="#Formats" class="nav-link">Formats</a></li>
           <li><a href="#party-ideas" class="nav-link">Party Ideas</a></li>
           <li><a href="#requirements" class="nav-link">Requirements</a></li>
-          <li><a href="#gallery" class="nav-link">Gallery</a></li>
           <li><a href="#team" class="nav-link">Our Team</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
@@ -991,6 +992,43 @@
     </div>
   </section>
 
+  
+  <!-- Gallery Section -->
+  <section id="gallery" class="section gallery">
+    <div class="container">
+      <h2 class="section-title">Photo Gallery</h2>
+      
+      <div class="gallery-grid">
+        <!-- Using placeholder images - replace with your actual images -->
+        <div class="gallery-item">
+          <img src="/api/placeholder/400/300" alt="Film Force Event">
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/400/300" alt="Film Force Event">
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/400/300" alt="Film Force Event">
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/400/300" alt="Film Force Event">
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/400/300" alt="Film Force Event">
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/400/300" alt="Film Force Event">
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/400/300" alt="Film Force Event">
+        </div>
+        <div class="gallery-item">
+          <img src="/api/placeholder/400/300" alt="Film Force Event">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
   <!-- About Section -->
   <section id="about" class="section">
     <div class="container">
@@ -1325,41 +1363,6 @@
         <li class="req-item">A double feature package (up to 5 hours) and extended hour packages are available</li>
         <li class="req-item">The Client MUST pay $75 for each hour the screen is being used past the allotted 2.5 hours</li>
       </ol>
-    </div>
-  </section>
-
-  <!-- Gallery Section -->
-  <section id="gallery" class="section gallery">
-    <div class="container">
-      <h2 class="section-title">Photo Gallery</h2>
-      
-      <div class="gallery-grid">
-        <!-- Using placeholder images - replace with your actual images -->
-        <div class="gallery-item">
-          <img src="/api/placeholder/400/300" alt="Film Force Event">
-        </div>
-        <div class="gallery-item">
-          <img src="/api/placeholder/400/300" alt="Film Force Event">
-        </div>
-        <div class="gallery-item">
-          <img src="/api/placeholder/400/300" alt="Film Force Event">
-        </div>
-        <div class="gallery-item">
-          <img src="/api/placeholder/400/300" alt="Film Force Event">
-        </div>
-        <div class="gallery-item">
-          <img src="/api/placeholder/400/300" alt="Film Force Event">
-        </div>
-        <div class="gallery-item">
-          <img src="/api/placeholder/400/300" alt="Film Force Event">
-        </div>
-        <div class="gallery-item">
-          <img src="/api/placeholder/400/300" alt="Film Force Event">
-        </div>
-        <div class="gallery-item">
-          <img src="/api/placeholder/400/300" alt="Film Force Event">
-        </div>
-      </div>
     </div>
   </section>
 
