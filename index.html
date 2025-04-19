@@ -805,51 +805,19 @@ button:hover {
     }
 
     .contact-form {
-      background-color: white;
-      padding: 2rem;
+      background-color: #ffffff; /* Keep original background or change slightly e.g. #fdfdfd */
+      padding: 2.5rem; /* Slightly increase padding */
       border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12); /* Enhance shadow */
+      border: 2px solid var(--primary-color); /* Add highlight border */
+      margin-top: 1rem; /* Add some space above */
     }
 
-        /* --- Contact Section Email Highlighting --- */
-    .contact-info h3.booking-prompt {
-        margin-top: 2rem; /* Add space above */
-        margin-bottom: 0.8rem; /* Reduce space below */
-        color: var(--primary-color); /* Use primary color */
-        font-size: 1.4rem; /* Slightly larger */
-    }
-
-    .contact-email-highlight {
-        background-color: rgba(255, 255, 255, 0.1); /* Subtle background */
-        padding: 1rem;
-        border-radius: 10px;
-        margin-bottom: 1.5rem;
-        border: 1px solid var(--primary-color);
-        text-align: center; /* Center the link */
-    }
-
-    .contact-email-link {
-        display: inline-block; /* Allows padding/styling */
-        background-color: var(--primary-color);
-        color: white !important; /* Ensure white text */
-        padding: 0.8rem 1.5rem;
-        border-radius: 30px;
-        font-weight: 700;
-        font-size: 1.1rem;
-        text-decoration: none;
-        transition: background-color 0.3s, transform 0.3s;
-        border: none;
-        cursor: pointer;
-    }
-
-    .contact-email-link:hover {
-        background-color: var(--primary-dark);
-        transform: translateY(-2px);
-        color: white !important; /* Ensure white text on hover */
-    }
-
-    .contact-email-link i {
-        margin-right: 8px; /* Space between icon and text */
+    .contact-form h3 {
+        text-align: center;
+        color: var(--secondary-dark); /* Use dark text color */
+        margin-bottom: 2rem; /* Space below heading */
+        font-size: 1.6rem; /* Make heading noticeable */
     }
 
     /* Adjust spacing for other contact items if needed */
@@ -1251,14 +1219,14 @@ button:hover {
     <div class="pricing-container">
       
       <div class="pricing-card recommended-card"> 
-        <span class="recommended-badge">Recommended</span> {/* */}
-        {/* */}
+        <span class="recommended-badge">Recommended</span> 
+        
         <div class="screen-image">
           <img src="images/new hartford day.jpg" alt="16 ft. Screen - Recommended for most events" width="100%" height="100%"/>
         </div>
         <div class="pricing-header">
           <h3 class="pricing-name">16 ft. Screen</h3>
-          <p class="pricing-type">Our Most Popular Outdoor Screen</p> {/* */}
+          <p class="pricing-type">Our Most Popular Outdoor Screen</p> 
         </div>
         <div class="pricing-body">
           <div class="price-item">
@@ -1281,7 +1249,7 @@ button:hover {
       </div>
 
       <div class="pricing-card">
-        {/* */}
+        
         <div class="screen-image">
           <img src="images/the 12 for pricing.jpg" alt="12 ft. Outdoor Screen" width="100%" height="100%" />
         </div>
@@ -1310,7 +1278,7 @@ button:hover {
       </div>
 
       <div class="pricing-card">
-        {/* */}
+        
         <div class="screen-image">
           <img src="images/the 10.jpg" alt="10 ft. Indoor Screen" width="100%" height="100%" />
         </div>
@@ -1338,21 +1306,21 @@ button:hover {
         </div>
       </div>
       
-    </div> {/* */}
+    </div> 
 
-    {/* */}
-    <p class="text-center" style="margin-top: 30px; font-style: italic;">Gratuities are greatly appreciated</p> {/* */}
+    
+    <p class="text-center" style="margin-top: 30px; font-style: italic;">Gratuities are greatly appreciated</p> 
 
-    {/* */}
-    <div class="slideshow-pricing" style="margin-top: 3rem;"> {/* */}
-      {/* */}
+    
+    <div class="slideshow-pricing" style="margin-top: 3rem;"> 
+      
       <div class="pricing-card">
-        {/* */}
+        
         <div class="pricing-header">
           <h3 class="pricing-name">Custom Slideshows</h3>
         </div>
 
-        {/* */}
+        
         <div class="pricing-body">
           <div class="price-item">
             <span class="price-name">Custom Slideshows (300 Picture Limit)</span>
@@ -1368,13 +1336,13 @@ button:hover {
           </div>
         </div>
 
-        {/* */}
+        
         <div class="video-container">
-          {/* */}
+          
           <iframe width="560" height="315" src="https://www.youtube.com/embed/EWKhqdJCT6Y?si=ivQLR47Jk5nr11Cd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
 
-        {/* */}
+        
         <div class="pricing-footer">
           <a href="#contact" class="btn">Book Now</a>
         </div>
@@ -1616,24 +1584,24 @@ I definitely recommend Film Force! It was really fun. We might make this a summe
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="section contact">
+<section id="contact" class="section contact">
     <div class="container">
       <h2 class="section-title">Contact Us</h2>
       
       <div class="contact-grid">
-                <div class="contact-info">
+        
+      
+        <div class="contact-info">
           <h3>Get In Touch</h3>
-          
-          {/* */}
-          <h3 class="booking-prompt">Book Your Event:</h3>
-          <div class="contact-email-highlight">
-              <a href="mailto:filmforcellc@gmail.com" class="contact-email-link">
-                  <i class="fas fa-envelope"></i> {/* */}
-                  Email Us: filmforcellc@gmail.com
-              </a>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+            
+              <p><a href="mailto:filmforcellc@gmail.com" style="color: white; text-decoration: underline;">filmforcellc@gmail.com</a></p>
+            </div>
           </div>
-          {/* */}
-
           <div class="contact-item">
             <div class="contact-icon">
               <i class="fas fa-map-marker-alt"></i>
@@ -1656,17 +1624,13 @@ I definitely recommend Film Force! It was really fun. We might make this a summe
             </a>
           </div>
         </div>
-          <section id="contact" class="section contact">
-    <div class="container">
-      <h2 class="section-title">Contact Us</h2>
-      
-      <div class="contact-grid">
-        <div class="contact-info">
-          </div>
         
-<div class="contact-form">
+      
+        <div class="contact-form"> 
+          <h3>Send Us Your Request</h3> {/* */}
           <form action="https://formsubmit.co/filmforcellc@gmail.com" method="POST"> 
             
+          
             <div class="form-group">
               <label for="name" class="form-label">Name</label>
               <input type="text" id="name" name="name" class="form-control" required> 
@@ -1684,18 +1648,21 @@ I definitely recommend Film Force! It was really fun. We might make this a summe
               <textarea id="message" name="message" class="form-control" required></textarea> 
             </div>
 
+          
             <input type="hidden" name="_replyto" value="%email%"> 
-            
             <input type="hidden" name="_next" value="http://filmforcellc.com/thank-you.html"> 
-            
             <input type="hidden" name="_subject" value="New Film Force Website Submission!">
 
             <button type="submit" class="btn">Send Message</button>
           </form>
-           </div>
-      </div>
-    </div>
+        </div>
+      
+
+      </div> {/* */}
+    </div> {/* */}
   </section>
+
+
         
 
       </div>
