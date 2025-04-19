@@ -448,6 +448,35 @@ button:hover {
       text-align: center;
       padding: 0 2rem 2rem;
     }
+    
+    pricing-card.recommended-card {
+      border: 3px solid var(--primary-color); /* Highlight border */
+      transform: scale(1.03); /* Slightly larger */
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+      position: relative; /* Needed for badge positioning */
+      z-index: 10; /* Bring it slightly forward */
+    }
+
+    /* Adjust hover effect for recommended card */
+    .pricing-card.recommended-card:hover {
+       transform: scale(1.05); /* Slightly larger scale on hover */
+    }
+
+    /* Style for the 'Recommended' badge */
+    .recommended-badge {
+      position: absolute;
+      top: 15px;
+      right: -10px; /* Position slightly outside the card */
+      background-color: var(--primary-color);
+      color: white;
+      padding: 5px 15px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border-radius: 20px 0 0 20px; /* Rounded on one side */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      transform: rotate(0deg); /* Keep it horizontal */
+    }
+
 
     /* Formats Section */
     .Formats {
@@ -781,6 +810,64 @@ button:hover {
       border-radius: 15px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
+
+        /* --- Contact Section Email Highlighting --- */
+    .contact-info h3.booking-prompt {
+        margin-top: 2rem; /* Add space above */
+        margin-bottom: 0.8rem; /* Reduce space below */
+        color: var(--primary-color); /* Use primary color */
+        font-size: 1.4rem; /* Slightly larger */
+    }
+
+    .contact-email-highlight {
+        background-color: rgba(255, 255, 255, 0.1); /* Subtle background */
+        padding: 1rem;
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+        border: 1px solid var(--primary-color);
+        text-align: center; /* Center the link */
+    }
+
+    .contact-email-link {
+        display: inline-block; /* Allows padding/styling */
+        background-color: var(--primary-color);
+        color: white !important; /* Ensure white text */
+        padding: 0.8rem 1.5rem;
+        border-radius: 30px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s;
+        border: none;
+        cursor: pointer;
+    }
+
+    .contact-email-link:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-2px);
+        color: white !important; /* Ensure white text on hover */
+    }
+
+    .contact-email-link i {
+        margin-right: 8px; /* Space between icon and text */
+    }
+
+    /* Adjust spacing for other contact items if needed */
+    .contact-info .contact-item {
+        margin-bottom: 1rem; /* Adjust spacing */
+    }
+     /* Ensure recommended card stays prominent on smaller screens */
+    @media (max-width: 768px) {
+        .pricing-card.recommended-card {
+            transform: scale(1); /* Reset scale */
+             order: -1; /* Force recommended card to top */
+        }
+         .pricing-container {
+             display: flex;
+             flex-direction: column;
+        }
+    }
+
 
     .form-group {
       margin-bottom: 1.5rem;
@@ -1156,48 +1243,47 @@ button:hover {
 <section id="pricing" class="section">
   <div class="container">
  
-
     <h2 class="section-title">Our Pricing</h2>
     <p class="pricing-subtitle">Choose the perfect screen size for your event</p>
 
-   <!-- Note: Prices haven't changed -->
-    <p class="price-value" style="text-align:center; margin-top: 20px; font-weight: bold;">After over 1 decade, we have not changed our prices!</p>
+   <p class="price-value" style="text-align:center; margin-top: 20px; font-weight: bold;">After over 1 decade, we have not changed our prices!</p>
+    
     <div class="pricing-container">
-      <!-- 10 ft. Screen Card -->
-      <div class="pricing-card">
-        <!-- Screen Image -->
+      
+      <div class="pricing-card recommended-card"> 
+        <span class="recommended-badge">Recommended</span> {/* */}
+        {/* */}
         <div class="screen-image">
-          <img src="images/the 10.jpg" alt="10 ft. Screen" width="100%" height="100%" />
+          <img src="images/new hartford day.jpg" alt="16 ft. Screen - Recommended for most events" width="100%" height="100%"/>
         </div>
         <div class="pricing-header">
-          <h3 class="pricing-name">10 ft. Screen</h3>
-          <p class="pricing-type">Indoor Screen</p>
+          <h3 class="pricing-name">16 ft. Screen</h3>
+          <p class="pricing-type">Our Most Popular Outdoor Screen</p> {/* */}
         </div>
         <div class="pricing-body">
           <div class="price-item">
             <span class="price-name">1 Event</span>
-            <span class="price-value">$150</span>
+            <span class="price-value">$275</span>
           </div>
           <div class="price-item">
             <span class="price-name">Premium Package</span>
-            <span class="price-value">$380</span>
+            <span class="price-value">$700</span>
           </div>
           <div class="price-item">
             <span class="price-name">Deluxe Package</span>
-            <span class="price-value">$600</span>
+            <span class="price-value">$1,100</span>
           </div>
-          <p class="price-info">Up to 35 People (12 ft x 12 ft Flat, Clear Area)</p>
+          <p class="price-info">Up to 150 People (40 ft x 40 ft Flat, Clear Area)</p>
         </div>
         <div class="pricing-footer">
           <a href="#contact" class="btn">Book Now</a>
         </div>
       </div>
 
-      <!-- 12 ft. Screen Card -->
       <div class="pricing-card">
-        <!-- Screen Image -->
+        {/* */}
         <div class="screen-image">
-          <img src="images/the 12 for pricing.jpg" alt="12 ft. Screen" width="100%" height="100%" />
+          <img src="images/the 12 for pricing.jpg" alt="12 ft. Outdoor Screen" width="100%" height="100%" />
         </div>
         <div class="pricing-header">
           <h3 class="pricing-name">12 ft. Screen</h3>
@@ -1223,50 +1309,50 @@ button:hover {
         </div>
       </div>
 
-      <!-- 16 ft. Screen Card -->
       <div class="pricing-card">
-        <!-- Screen Image -->
+        {/* */}
         <div class="screen-image">
-          <img src="images/new hartford day.jpg" alt="16 ft. Screen" width="100%" height="100%"/>
+          <img src="images/the 10.jpg" alt="10 ft. Indoor Screen" width="100%" height="100%" />
         </div>
         <div class="pricing-header">
-          <h3 class="pricing-name">16 ft. Screen</h3>
-          <p class="pricing-type">Outdoor Screen</p>
+          <h3 class="pricing-name">10 ft. Screen</h3>
+          <p class="pricing-type">Indoor Screen</p>
         </div>
         <div class="pricing-body">
           <div class="price-item">
             <span class="price-name">1 Event</span>
-            <span class="price-value">$275</span>
+            <span class="price-value">$150</span>
           </div>
           <div class="price-item">
             <span class="price-name">Premium Package</span>
-            <span class="price-value">$700</span>
+            <span class="price-value">$380</span>
           </div>
           <div class="price-item">
             <span class="price-name">Deluxe Package</span>
-            <span class="price-value">$1,100</span>
+            <span class="price-value">$600</span>
           </div>
-          <p class="price-info">Up to 150 People (40 ft x 40 ft Flat, Clear Area)</p>
+          <p class="price-info">Up to 35 People (12 ft x 12 ft Flat, Clear Area)</p>
         </div>
         <div class="pricing-footer">
           <a href="#contact" class="btn">Book Now</a>
         </div>
       </div>
-    </div>
+      
+    </div> {/* */}
 
-    <!-- Gratuities Note below screen pricing -->
-    <p class="text-center" style="margin-top: 20px; font-style: italic;">Gratuities are greatly appreciated</p>
+    {/* */}
+    <p class="text-center" style="margin-top: 30px; font-style: italic;">Gratuities are greatly appreciated</p> {/* */}
 
-    <!-- Custom Slideshows Section -->
-    <div class="slideshow-pricing">
-      <!-- Custom Slideshows Card -->
+    {/* */}
+    <div class="slideshow-pricing" style="margin-top: 3rem;"> {/* */}
+      {/* */}
       <div class="pricing-card">
-        <!-- Custom Slideshows Header -->
+        {/* */}
         <div class="pricing-header">
           <h3 class="pricing-name">Custom Slideshows</h3>
         </div>
 
-        <!-- Custom Slideshows Pricing Body -->
+        {/* */}
         <div class="pricing-body">
           <div class="price-item">
             <span class="price-name">Custom Slideshows (300 Picture Limit)</span>
@@ -1282,13 +1368,13 @@ button:hover {
           </div>
         </div>
 
-        <!-- YouTube Video -->
-<div class="video-container">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/EWKhqdJCT6Y?si=ivQLR47Jk5nr11Cd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+        {/* */}
+        <div class="video-container">
+          {/* */}
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/EWKhqdJCT6Y?si=ivQLR47Jk5nr11Cd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
 
-
-        <!-- Footer -->
+        {/* */}
         <div class="pricing-footer">
           <a href="#contact" class="btn">Book Now</a>
         </div>
@@ -1296,7 +1382,6 @@ button:hover {
     </div>
   </div>
 </section>
-
 
 
 
@@ -1536,16 +1621,19 @@ I definitely recommend Film Force! It was really fun. We might make this a summe
       <h2 class="section-title">Contact Us</h2>
       
       <div class="contact-grid">
-        <div class="contact-info">
+                <div class="contact-info">
           <h3>Get In Touch</h3>
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-envelope"></i>
-            </div>
-            <div>
-              <p>filmforcellc@gmail.com</p>
-            </div>
+          
+          {/* */}
+          <h3 class="booking-prompt">Book Your Event:</h3>
+          <div class="contact-email-highlight">
+              <a href="mailto:filmforcellc@gmail.com" class="contact-email-link">
+                  <i class="fas fa-envelope"></i> {/* */}
+                  Email Us: filmforcellc@gmail.com
+              </a>
           </div>
+          {/* */}
+
           <div class="contact-item">
             <div class="contact-icon">
               <i class="fas fa-map-marker-alt"></i>
@@ -1554,15 +1642,16 @@ I definitely recommend Film Force! It was really fun. We might make this a summe
               <p>Serving all of Connecticut</p>
             </div>
           </div>
+          
           <h3 style="margin-top: 2rem;">Follow Us</h3>
           <div class="social-links">
-            <a href="https://www.facebook.com/Film-Force-LLC-838155592876430/" class="social-link" target="_blank">
+            <a href="https://www.facebook.com/Film-Force-LLC-838155592876430/" class="social-link" target="_blank" aria-label="Film Force LLC on Facebook">
               <i class="fab fa-facebook-f"></i>
             </a>
-            <a href="https://www.yelp.com/biz/film-force-llc-new-hartford" class="social-link" target="_blank">
+            <a href="https://www.yelp.com/biz/film-force-llc-new-hartford" class="social-link" target="_blank" aria-label="Film Force LLC on Yelp">
               <i class="fab fa-yelp"></i>
             </a>
-            <a href="https://www.google.com/search?q=film+force+llc" class="social-link" target="_blank">
+            <a href="https://www.google.com/search?q=film+force+llc" class="social-link" target="_blank" aria-label="Film Force LLC on Google">
               <i class="fab fa-google"></i>
             </a>
           </div>
