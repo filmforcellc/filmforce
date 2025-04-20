@@ -1468,9 +1468,9 @@ button:hover {
         
         <div class="idea-card">
           <div class="idea-icon">
-            <i class="fas fa-users"></i>
+            <i class="fas fa-hand-holding-dollar"></i>
           </div>
-          <h3>Fund Raisers</h3>
+          <h3>Fundraisers</h3>
         </div>
         
         <div class="idea-card">
@@ -1731,53 +1731,163 @@ I definitely recommend Film Force! It was really fun. We might make this a summe
   </footer>
 
   <script>
-    // Mobile Menu Toggle
+     // --- Mobile Menu Toggle ---
     document.querySelector('.menu-toggle').addEventListener('click', function() {
       const navMenu = document.querySelector('.nav-menu');
       navMenu.classList.toggle('active');
       
+      // Toggle aria-expanded attribute for accessibility
+      const isExpanded = navMenu.classList.contains('active');
+      this.setAttribute('aria-expanded', isExpanded);
+
       const bars = document.querySelectorAll('.bar');
       bars.forEach(bar => bar.classList.toggle('active'));
     });
 
-    // Smooth scrolling for navigation links
+    // --- Smooth scrolling for navigation links ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
         
         const navMenu = document.querySelector('.nav-menu');
+        // Close mobile menu if open
         if (navMenu.classList.contains('active')) {
           navMenu.classList.remove('active');
+           document.querySelector('.menu-toggle').setAttribute('aria-expanded', 'false');
+           document.querySelectorAll('.bar').forEach(bar => bar.classList.remove('active'));
         }
         
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          // Calculate position, considering the fixed header height (approx 80px)
+          const headerOffset = 80; 
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
           window.scrollTo({
-            top: target.offsetTop - 80,
+            top: offsetPosition,
             behavior: 'smooth'
           });
+          
+          // Optionally update URL hash without jumping (for better history)
+          // history.pushState(null, null, targetId); 
         }
       });
     });
-    
-//slide show functionality
+
+    // --- Contact Form Handling (Using FormSubmit - No JS needed here for submission) ---
+    // Note: The previous mailto: JS was removed as requested earlier.
+
+    // --- Slideshow Logic ---
     let slideIndex = 1;
-showSlides(slideIndex);
+    let autoSlideInterval = null; // Variable to hold the interval timer
+    const slideAdvanceTime = 3000; // Time in milliseconds (3 seconds)
+    const slideshowContainer = document.querySelector('.slideshow-container'); // Get the container
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
+    // Function to display a specific slide
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      if (!slides || slides.length === 0) return; // Exit if no slides
 
-function showSlides(n) {
-  let slides = document.getElementsByClassName("mySlides");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  slides[slideIndex - 1].style.display = "block";
-}
+      if (n > slides.length) { slideIndex = 1; } // Loop to first slide
+      if (n < 1) { slideIndex = slides.length; } // Loop to last slide
+      
+      // Hide all slides
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      // Display the current slide
+      slides[slideIndex - 1].style.display = "block";
+      
+      // Reset the auto-slide timer whenever a slide is shown
+      resetAutoSlideTimer();
+    }
 
+    // Function to advance slides (positive n for next, negative for prev)
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    // Function to reset the automatic slideshow timer
+    function resetAutoSlideTimer() {
+      clearInterval(autoSlideInterval); // Clear existing timer
+      autoSlideInterval = setInterval(function() {
+        plusSlides(1); // Advance to the next slide
+      }, slideAdvanceTime);
+    }
+
+    // --- Initialize Slideshow ---
+    showSlides(slideIndex); // Show the first slide and start timer
+
+
+    // --- Add Keyboard Navigation ---
+    document.addEventListener('keydown', function(event) {
+        // Check if the key pressed is ArrowRight or ArrowLeft
+         // We also check if the user might be typing in the contact form
+         const activeElement = document.activeElement;
+         const isTyping = activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA';
+
+        if (!isTyping) { // Only navigate if not typing in form
+            if (event.key === 'ArrowRight') {
+                plusSlides(1); // Go to next slide
+            } else if (event.key === 'ArrowLeft') {
+                plusSlides(-1); // Go to previous slide
+            }
+        }
+    });
+
+    // --- Add Basic Swipe Navigation ---
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const swipeThreshold = 50; // Minimum pixels to count as a swipe
+
+    if (slideshowContainer) { // Make sure the container exists
+        slideshowContainer.addEventListener('touchstart', function(event) {
+            // Use changedTouches[0] for multi-touch compatibility
+            touchStartX = event.changedTouches[0].screenX;
+        }, { passive: true }); // Use passive listener for performance
+
+        slideshowContainer.addEventListener('touchend', function(event) {
+            touchEndX = event.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true }); 
+    }
+
+    function handleSwipe() {
+        let deltaX = touchEndX - touchStartX;
+        if (Math.abs(deltaX) > swipeThreshold) { // Check if swipe distance is significant
+            if (deltaX < 0) {
+                // Swiped left (finger moved left -> show next slide)
+                plusSlides(1);
+            } else {
+                // Swiped right (finger moved right -> show previous slide)
+                plusSlides(-1);
+            }
+        }
+        // Reset values for next swipe
+        touchStartX = 0;
+        touchEndX = 0;
+    }
+
+    // --- Make Slideshow Buttons work (Attach event listeners via JS) ---
+    // It's generally better practice than inline onclick=""
+    const prevButton = document.querySelector('.slideshow-container .prev');
+    const nextButton = document.querySelector('.slideshow-container .next');
+
+    if (prevButton) {
+        prevButton.addEventListener('click', function() {
+            plusSlides(-1);
+        });
+    }
+     if (nextButton) {
+        nextButton.addEventListener('click', function() {
+            plusSlides(1);
+        });
+    }
+    
   </script>
 </body>
 </html>
