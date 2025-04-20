@@ -259,12 +259,16 @@
   position: relative;
   max-width: 100%;
   height: 1000px;
+  overflow: hidden;
   margin: auto;
     z-index: 1;
 }
-
-.mySlides {
-  display: none;
+    
+.mySlides img {
+  display: block; 
+  width: 100%;    
+  height: 100%;   
+  object-fit: contain;
 }
 
 img {
