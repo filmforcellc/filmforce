@@ -299,31 +299,9 @@ img {
   z-index: 1000;
 }
 
-.slideshow-container .prev{
-  left: 0;
-  position: absolute;
-  top: 50%;
-  padding: 16px;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  transition: 0.3s;
-  z-index: 1000;
-}
+.slideshow-container .prev,
 .slideshow-container .next{
-  right: 0;
-  position: absolute;
-  top: 50%;
-  padding: 16px;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  transition: 0.3s;
-  z-index: 1000;
+  display: none;
 }
 
 button:hover {
@@ -1737,7 +1715,6 @@ I definitely recommend Film Force! It was really fun. We might make this a summe
   </footer>
 
   <script>
-     // --- Mobile Menu Toggle ---
     document.querySelector('.menu-toggle').addEventListener('click', function() {
       const navMenu = document.querySelector('.nav-menu');
       navMenu.classList.toggle('active');
@@ -1776,9 +1753,6 @@ I definitely recommend Film Force! It was really fun. We might make this a summe
             top: offsetPosition,
             behavior: 'smooth'
           });
-          
-          // Optionally update URL hash without jumping (for better history)
-          // history.pushState(null, null, targetId); 
         }
       });
     });
@@ -1819,14 +1793,37 @@ I definitely recommend Film Force! It was really fun. We might make this a summe
 
     // Function to reset the automatic slideshow timer
     function resetAutoSlideTimer() {
-      clearInterval(autoSlideInterval); // Clear existing timer
+      // Clear existing timer only if it exists
+      if (autoSlideInterval) {
+          clearInterval(autoSlideInterval);
+      }
+      // Start a new timer
       autoSlideInterval = setInterval(function() {
         plusSlides(1); // Advance to the next slide
       }, slideAdvanceTime);
     }
 
+    // Function to handle swipe gesture calculation
+    function handleSwipe() {
+        let deltaX = touchEndX - touchStartX;
+        if (Math.abs(deltaX) > swipeThreshold) { // Check if swipe distance is significant
+            if (deltaX < 0) {
+                // Swiped left (finger moved left -> show next slide)
+                plusSlides(1);
+            } else {
+                // Swiped right (finger moved right -> show previous slide)
+                plusSlides(-1);
+            }
+        }
+        // Reset values for next swipe
+        touchStartX = 0;
+        touchEndX = 0;
+    }
+
+
     // --- Initialize Slideshow ---
-    showSlides(slideIndex); // Show the first slide and start timer
+    // We initialize *after* defining functions and setting up listeners below
+    // showSlides(slideIndex); // Moved initialization lower
 
 
     // --- Add Keyboard Navigation ---
@@ -1845,41 +1842,56 @@ I definitely recommend Film Force! It was really fun. We might make this a summe
         }
     });
 
-    // --- Add Basic Swipe Navigation ---
+    // --- Add Touch (Swipe) and Click Navigation ---
     let touchStartX = 0;
     let touchEndX = 0;
     const swipeThreshold = 50; // Minimum pixels to count as a swipe
 
-    if (slideshowContainer) { // Make sure the container exists
+    if (slideshowContainer) { // Check if the slideshow container element exists on the page
+
+        // Listener for starting a touch
         slideshowContainer.addEventListener('touchstart', function(event) {
-            // Use changedTouches[0] for multi-touch compatibility
             touchStartX = event.changedTouches[0].screenX;
         }, { passive: true }); // Use passive listener for performance
 
+        // Listener for ending a touch (to calculate swipe)
         slideshowContainer.addEventListener('touchend', function(event) {
             touchEndX = event.changedTouches[0].screenX;
-            handleSwipe();
+            handleSwipe(); // Call the function to process the swipe
         }, { passive: true }); 
-    }
 
-    function handleSwipe() {
-        let deltaX = touchEndX - touchStartX;
-        if (Math.abs(deltaX) > swipeThreshold) { // Check if swipe distance is significant
-            if (deltaX < 0) {
-                // Swiped left (finger moved left -> show next slide)
-                plusSlides(1);
-            } else {
-                // Swiped right (finger moved right -> show previous slide)
-                plusSlides(-1);
+        // ===>>> NEW CLICK LISTENER PLACED HERE <<<===
+        // Listener for clicks on the slideshow area
+        slideshowContainer.addEventListener('click', function(event) {
+            // Get the bounding rectangle of the container
+            const rect = slideshowContainer.getBoundingClientRect();
+            // Calculate the click position relative to the container's left edge
+            const clickX = event.clientX - rect.left;
+            // Get the width of the container
+            const containerWidth = slideshowContainer.offsetWidth;
+
+            // Check if the click target was an image or the container background
+            const targetTag = event.target.tagName.toLowerCase();
+             if (targetTag === 'img' || event.target === slideshowContainer) {
+                 if (clickX < containerWidth / 2) {
+                    // Clicked on the left half
+                    plusSlides(-1);
+                } else {
+                    // Clicked on the right half
+                    plusSlides(1);
+                }
             }
-        }
-        // Reset values for next swipe
-        touchStartX = 0;
-        touchEndX = 0;
-    }
+        });
+        // ===>>> END OF NEW CLICK LISTENER <<<===
+
+        // Initialize the slideshow *after* listeners are attached
+         showSlides(slideIndex); 
+
+    } // --- End of 'if (slideshowContainer)' block ---
+
 
     // --- Make Slideshow Buttons work (Attach event listeners via JS) ---
-    // It's generally better practice than inline onclick=""
+    // This code remains even though buttons are hidden, in case you re-enable them later
     const prevButton = document.querySelector('.slideshow-container .prev');
     const nextButton = document.querySelector('.slideshow-container .next');
 
@@ -1893,7 +1905,6 @@ I definitely recommend Film Force! It was really fun. We might make this a summe
             plusSlides(1);
         });
     }
-    
   </script>
 </body>
 </html>
